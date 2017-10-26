@@ -168,10 +168,19 @@ function contactnumbers_civicrm_alterReportVar($varType, &$var, &$object) {
         if (array_key_exists('civicrm_phone_phones', $row)) {
           $phones = CRM_Core_BAO_Phone::allPhones($row['civicrm_phone_phones']);
           $html = '';
+	  // By default, we add a comma at the end of each line, to simplify
+	  // column splits in CSV exports, etc.
+	  $comma = ',';
+          $counter = 1;
+          $last = count($phones);
           foreach ($phones as $key => $phone) {
             if ($key) {
+	      // Drop the comma from the final phone number, since that would
+	      // mess up column splits in CSV exports.
+	      if ($counter == $last) $comma = '';
+              $counter++;
               $html .= '<strong>' . ts($phone['locationType']) . ':</strong> ';
-              $html .= $phone['phone'] . '<br />';
+              $html .= $phone['phone'] . $comma . '<br />';
             }
           }
           // Replace our placeholder with the resulting phone numbers.
