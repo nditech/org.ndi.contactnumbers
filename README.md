@@ -1,7 +1,5 @@
 # org.ndi.contactnumbers
 
-![Screenshot](/images/screenshot.png)
-
 This very small extension add a new field to reports: "Phone numbers". This
 field will list all phone numbers associated with a contact, rather than just
 their primary number.
@@ -10,8 +8,8 @@ The extension is licensed under [AGPL-3.0](LICENSE.txt).
 
 ## Requirements
 
-* PHP v5.4+
-* CiviCRM (4.7+)
+* PHP v7.4 or later
+* CiviCRM 5.65 or alter
 
 ## Installation (Web UI)
 
